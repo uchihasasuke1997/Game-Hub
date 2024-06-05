@@ -1,46 +1,28 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    margin: 0;
-}
-
 .container {
-    text-align: center;
-    background: #fff;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-#question {
-    margin: 20px 0;
-    font-size: 1.2em;
+#game {
+    display: none;
 }
 
-#options {
-    margin: 20px 0;
-}
-
-
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    margin: 10px;
-    cursor: pointer;
+#options div {
+    margin-bottom: 10px;
 }
 
 #result {
-    margin: 20px 0;
-    font-size: 1.2em;
-    color: green;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 #score {
-    font-size: 1.2em;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#username-input {
+    text-align: center;
 }
