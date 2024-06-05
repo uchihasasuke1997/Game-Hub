@@ -76,6 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitButton.addEventListener('click', submitAnswer);
     exitButton.addEventListener('click', endGame);
+    playAgainButton.addEventListener('click', () => {
+        // Reset the game
+        gameStarted = false;
+        startButton.style.display = 'inline'; // Show start button
+        submitButton.style.display = 'none';
+        exitButton.style.display = 'none';
+        playAgainButton.style.display = 'none';
+        scoreElement.textContent = '';
+        resultElement.textContent = '';
+        currentQuestionIndex = 0;
+        positivePoints = 0;
+        negativePoints = 0;
+        loadQuestion();
+    });
 
     function submitAnswer() {
         if (!gameStarted) return; // Check if the game has started
@@ -110,7 +124,4 @@ document.addEventListener('DOMContentLoaded', () => {
         optionsElement.innerHTML = ''; // Clear options
         submitButton.style.display = 'none';
         exitButton.style.display = 'none';
-        scoreElement.textContent = `You got ${positivePoints} questions correct and your total score is ${positivePoints - negativePoints} points.`;
-        playAgainButton.style.display = 'inline';
-    }
-});
+        scoreElement
