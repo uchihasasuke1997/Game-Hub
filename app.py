@@ -8,7 +8,7 @@ def index():
 
 @app.route('/quiz')
 def quiz():
-    return render_template('quiz.html')
+    return render_template('quizgame.html')
 
 @app.route('/tictactoe')
 def tictactoe():
