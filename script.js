@@ -107,4 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function endGame() {
         gameStarted = false;
         questionElement.textContent = '';
-        optionsElement
+        optionsElement.innerHTML = ''; // Clear options
+        submitButton.style.display = 'none';
+        exitButton.style.display = 'none';
+        scoreElement.textContent = `You got ${positivePoints} questions correct and your total score is ${positivePoints - negativePoints} points.`;
+        playAgainButton.style.display = 'inline';
+    }
+});
