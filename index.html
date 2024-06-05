@@ -9,13 +9,18 @@
 <body>
     <div class="container">
         <h1>Welcome to the Quiz Game!</h1>
-        <div id="game">
+        <div id="username-input">
+            <label for="username">Enter your name:</label>
+            <input type="text" id="username" placeholder="Your Name">
+            <button id="start">Start Game</button>
+        </div>
+        <div id="game" style="display: none;">
             <div id="question"></div>
             <div id="options"></div>
-            <button id="submit">Submit</button>
+            <button id="submit" style="display: none;">Submit</button>
+            <button id="exit" style="display: none;">Exit Game</button>
             <p id="result"></p>
         </div>
-        <button id="start">Start Game</button>
         <button id="play-again" style="display: none;">Play Again</button>
         <p id="score"></p>
     </div>
