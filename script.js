@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let username = ''; // Variable to store the user's name
+    let gameStarted = false; // Variable to track if the game has started
+
     const questions = [
         { question: "What color is the sky during the day?", options: ["Red", "Green", "Blue", "Yellow"], answer: "Blue" },
         { question: "Which fruit is known as the 'king of fruits'?", options: ["Banana", "Apple", "Mango", "Orange"], answer: "Mango" },
@@ -17,21 +20,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreElement = document.getElementById('score');
     const startButton = document.getElementById('start');
     const submitButton = document.getElementById('submit');
+    const exitButton = document.getElementById('exit');
     const playAgainButton = document.getElementById('play-again');
 
-    startButton.addEventListener('click', startGame);
-    submitButton.addEventListener('click', submitAnswer);
-    playAgainButton.addEventListener('click', playAgain);
+    startButton.addEventListener('click', () => {
+        // Get the username from the input field
+        username = document.getElementById('username').value.trim();
+
+        // Check if username is provided
+        if (username === '') {
+            alert('Please enter your name before starting the game.');
+            return;
+        }
+
+        // Hide username input and show game
+        document.getElementById('username-input').style.display = 'none';
+        document.getElementById('game').style.display = 'block';
+
+        // Start the game
+        startGame();
+    });
 
     function startGame() {
+        gameStarted = true;
         startButton.style.display = 'none';
+        submitButton.style.display = 'inline'; // Show submit button
+        exitButton.style.display = 'inline'; // Show exit button
         playAgainButton.style.display = 'none';
         scoreElement.textContent = '';
         resultElement.textContent = '';
         positivePoints = 0;
         negativePoints = 0;
         currentQuestionIndex = 0;
-        submitButton.style.display = 'inline';
         loadQuestion();
     }
 
@@ -54,7 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    submitButton.addEventListener('click', submitAnswer);
+    exitButton.addEventListener('click', endGame);
+
     function submitAnswer() {
+        if (!gameStarted) return; // Check if the game has started
         const selectedOption = document.querySelector('input[name="option"]:checked');
         
         if (!selectedOption) {
@@ -81,14 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function endGame() {
+        gameStarted = false;
         questionElement.textContent = '';
-        optionsElement.textContent = '';
-        submitButton.style.display = 'none';
-        scoreElement.textContent = `You got ${positivePoints} questions correct and your total score is ${positivePoints - negativePoints} points.`;
-        playAgainButton.style.display = 'inline';
-    }
-
-    function playAgain() {
-        startGame();
-    }
-});
+        optionsElement
